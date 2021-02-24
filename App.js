@@ -8,7 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { AsyncStorage  } from 'react-native';
 import Parse from 'parse/react-native.js';
-import InscriptionForm from './front-end/InscriptionForm';
+import InscriptionAsso from './front-end/InscriptionAsso';
 
 //Before using the SDK...
 Parse.setAsyncStorage(AsyncStorage);
@@ -53,7 +53,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Inscription" component={InscriptionForm} />
+        <Stack.Screen name="Inscription" component={InscriptionAsso} />
       </Stack.Navigator>
     </NavigationContainer>
   );
