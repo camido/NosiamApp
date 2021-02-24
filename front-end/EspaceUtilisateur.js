@@ -1,25 +1,39 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, View, Button, Alert} from 'react-native';
+import { StyleSheet, Text, View, Alert} from 'react-native';
+import { Button } from 'react-native-elements';
+
 
 import { AsyncStorage  } from 'react-native';
 import Parse from 'parse/react-native.js';
 
 
-export default function App() {
+export default function EspaceUtilisateur({ navigation }) {
  
-  
     return (
       <View style={styles.container}>
-        <Text>Welcome on Nosiam!</Text>
-        <Button style={styles.returnButton}
-          title='Retour'
-          onPress={() => Alert.alert('Page de connexion')} 
+
+        <Button 
+          title='Je recherche un logement'
+          type ="outline"
+          buttonStyle= {styles.Button}
+          onPress={() => Alert.alert('Je recherche un logment')} 
         />
+
         <Button
-          title='Inscription'
-          onPress={() => Alert.alert("Page d'inscription")}
+          title='Je propose un logement'
+          type ="outline"
+          buttonStyle= {styles.Button}
+          onPress={() => Alert.alert("Je propose un logment")}
         />
+
+        <Button
+          title='Je suis une association'
+          type ="outline"
+          buttonStyle= {styles.Button}
+          onPress={() => Alert.alert("Je suis une association")}
+        />
+
         <StatusBar style="auto" />
       </View>
     );
@@ -36,18 +50,11 @@ const styles = StyleSheet.create({
     title: {
 
     },
-    returnButton: {
-        position: fixed,
-        top: 0,
-        right: 0,
-    },
-    tenantButton: {
+    Button: {
 
-    },
-    hostButton: {
-
-    },
-    associationButton: {
+        marginTop: 30,
+        borderRadius: 8,
+        width: 250,
 
     },
   });

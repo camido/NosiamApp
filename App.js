@@ -9,6 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { AsyncStorage  } from 'react-native';
 import Parse from 'parse/react-native.js';
 import InscriptionForm from './front-end/InscriptionForm';
+import EspaceUtilisateur from './front-end/EspaceUtilisateur'
 
 //Before using the SDK...
 Parse.setAsyncStorage(AsyncStorage);
@@ -21,8 +22,8 @@ function HomeScreen(  { navigation }  ) {
     <View style={styles.container}>
       <Text>Welcome on Nosiam!</Text>
       <Button
-        title='Connexion'
-        onPress={() => Alert.alert('Page de connexion')} 
+        title='Espace utilisateur'
+        onPress={() => navigation.navigate('Espace utilisateur')} 
       />
       <Button
         title='Inscription'
@@ -54,6 +55,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Inscription" component={InscriptionForm} />
+        <Stack.Screen name="Espace utilisateur" component={EspaceUtilisateur} />
       </Stack.Navigator>
     </NavigationContainer>
   );
