@@ -43,6 +43,10 @@ export default function App() {
     <View style={styles.container}>
       <Text>Welcome on Nosiam!</Text>
       <Button
+        title='Connexion'
+        onPress={() => Alert.alert('Page de connexion')} 
+      />
+      <Button
         title='Inscription'
         onPress={() => Alert.alert("Page d'inscription")}
       />
