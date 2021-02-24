@@ -41,11 +41,11 @@ export default function App() {
     createInstallation = async () => {
       const  Installation = Parse.Object.extend(Parse.Installation);
       const  installation = new  Installation();
-        
+
       installation.set('deviceType', Platform.OS);
       await  installation.save();
     };
-    
+
     createInstallation();
   }, []);
 
