@@ -8,36 +8,35 @@ import { AsyncStorage  } from 'react-native';
 import Parse from 'parse/react-native.js';
 
 
-export default function EspaceUtilisateur({ navigation }) {
+export default function EspaceUtilisateur({ route, navigation}) {
  
-    return (
-      <View style={styles.container}>
+    const { type } = route.params
+    var road = '';
+    if(type == "Association" )
+        road = "Inscription Association"
+    if(type == "Hôte")
+        road = "InscriptionHote"
+    if(type == "Locataire")
+        road = "InscriptionLocataire"
 
-        <Button 
-          title='Je recherche un logement'
-          type ="outline"
-          buttonStyle= {styles.Button}
-          onPress={() => Alert.alert('Je recherche un logment')} 
-        />
+  return (
+    <View style={styles.container}>
+      <Text> Espace utilisateur : { type } </Text>
+      <Button
+        title='Connexion'
+        buttonStyle= {styles.Button}
+        onPress={() => navigation.navigate('Espace utilisateur')} 
+      />
+      <Button
+        title='Inscription'
+        buttonStyle= {styles.Button}
+        onPress={() => navigation.navigate(road)}
+      />
+      <StatusBar style="auto" />
+    </View>
+  );
+}
 
-        <Button
-          title='Je propose un logement'
-          type ="outline"
-          buttonStyle= {styles.Button}
-          onPress={() => Alert.alert("Je propose un logment")}
-        />
-
-        <Button
-          title='Je suis une association'
-          type ="outline"
-          buttonStyle= {styles.Button}
-          onPress={() => Alert.alert("Je suis une association")}
-        />
-
-        <StatusBar style="auto" />
-      </View>
-    );
-  }
 
 
 const styles = StyleSheet.create({
@@ -55,6 +54,6 @@ const styles = StyleSheet.create({
         marginTop: 30,
         borderRadius: 8,
         width: 250,
-
+  
     },
   });
