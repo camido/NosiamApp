@@ -60,7 +60,7 @@ const Stack = createStackNavigator();
 
 export default function App() {
  
-  useEffect(() => {
+  /*useEffect(() => {
     createInstallation = async () => {
       const  Installation = Parse.Object.extend(Parse.Installation);
       const  installation = new  Installation();
@@ -71,7 +71,7 @@ export default function App() {
 
     createInstallation();
   }, []);
-
+*/
   return (
     <NavigationContainer>
       <Stack.Navigator>
