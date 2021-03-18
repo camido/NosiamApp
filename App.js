@@ -16,6 +16,7 @@ import EnAttente from './front-end/confirmations/enAttente';
 import TicTacToe from './front-end/game/game';
 import gameCodeCreation from './front-end/game/gameCodeCrea';
 import gameConnexion from './front-end/game/gameConnexion';
+import TestGeoloc from './front-end/TestGeoloc';
 
 //Before using the SDK...
 Parse.setAsyncStorage(AsyncStorage);
@@ -55,6 +56,14 @@ function HomeScreen(  { navigation }  ) {
         })}
       />
 
+      <Button
+        title='TestGeoloc'
+        type ="outline"
+        buttonStyle= {styles.Button}
+        onPress={() => navigation.navigate('Geolocalisation', {
+          type: 'Association'
+        })}
+      />
       <StatusBar style="auto" />
     </View>
   );
@@ -109,6 +118,7 @@ export default function App() {
           <>
             <Stack.Screen name="Connexion code" component={gameConnexion} />
             <Stack.Screen name="Accueil" component={HomeScreen} />
+            <Stack.Screen name="Geolocalisation" component={TestGeoloc} />
           </>
         )}
       </Stack.Navigator>
