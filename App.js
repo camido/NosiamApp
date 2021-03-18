@@ -7,11 +7,15 @@ import { Button } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { AsyncStorage  } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import Parse from 'parse/react-native.js';
 import EspaceUtilisateur from './front-end/EspaceUtilisateur'
 import InscriptionAsso from './front-end/inscriptions/InscriptionAsso';
 import EnAttente from './front-end/confirmations/enAttente';
+import TicTacToe from './front-end/game/game';
+import gameCodeCreation from './front-end/game/gameCodeCrea';
+import gameConnexion from './front-end/game/gameConnexion';
 
 //Before using the SDK...
 Parse.setAsyncStorage(AsyncStorage);
@@ -72,13 +76,41 @@ export default function App() {
     createInstallation();
   }, []);
 */
+  const [newUser,setNewUser]= useState(true)
+  useEffect(() => {
+    const isNewUser = async () => {
+      //AsyncStorage.clear();
+      try {
+        const jsonValue = await AsyncStorage.getItem('code')
+        console.log(jsonValue)
+        return jsonValue != null ? 
+          setNewUser(false): 
+          setNewUser(true);
+      } catch(e) {
+        // error reading value
+      }
+    }
+    isNewUser();
+    console.log(newUser)
+  }, [])
+  
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Accueil" component={HomeScreen} />
-        <Stack.Screen name="Espace utilisateur" component={EspaceUtilisateur} />
-        <Stack.Screen name="Inscription Association" component={InscriptionAsso} />
-        <Stack.Screen name="Attente de confirmation" component={EnAttente} />
+        { newUser === true ? (
+          <>
+            <Stack.Screen name="Premier lancement" component={gameCodeCreation} />  
+            <Stack.Screen name="Accueil" component={HomeScreen} />
+            <Stack.Screen name="Espace utilisateur" component={EspaceUtilisateur} />
+            <Stack.Screen name="Inscription Association" component={InscriptionAsso} />
+            <Stack.Screen name="Attente de confirmation" component={EnAttente} />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="Connexion code" component={gameConnexion} />
+            <Stack.Screen name="Accueil" component={HomeScreen} />
+          </>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );
