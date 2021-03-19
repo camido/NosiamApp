@@ -16,6 +16,8 @@ import EnAttente from './front-end/confirmations/enAttente';
 import TicTacToe from './front-end/game/game';
 import gameCodeCreation from './front-end/game/gameCodeCrea';
 import gameConnexion from './front-end/game/gameConnexion';
+import InscriptionLocataire from './front-end/inscriptions/InscriptionLocataire';
+import Connexion from './front-end/Connexion';
 
 //Before using the SDK...
 Parse.setAsyncStorage(AsyncStorage);
@@ -97,19 +99,23 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        { newUser === true ? (
-          <>
-            <Stack.Screen name="Premier lancement" component={gameCodeCreation} />  
             <Stack.Screen name="Accueil" component={HomeScreen} />
             <Stack.Screen name="Espace utilisateur" component={EspaceUtilisateur} />
-            <Stack.Screen name="Inscription Association" component={InscriptionAsso} />
-            <Stack.Screen name="Attente de confirmation" component={EnAttente} />
-          </>
-        ) : (
-          <>
-            <Stack.Screen name="Connexion code" component={gameConnexion} />
-            <Stack.Screen name="Accueil" component={HomeScreen} />
-          </>
+            { newUser === true ? (
+            <>
+              <Stack.Screen name="Premier lancement" component={gameCodeCreation} /> 
+              <Stack.Screen name="Connexion" component={Connexion} />
+              <Stack.Screen name="Inscription Locataire" component={InscriptionLocataire} />
+              <Stack.Screen name="Inscription Association" component={InscriptionAsso} />
+              <Stack.Screen name="Attente de confirmation" component={EnAttente} />
+            </>
+            ) : (
+            <>
+              <Stack.Screen name="Connexion code" component={gameConnexion} />
+              <Stack.Screen name="Accueil" component={HomeScreen} />
+              <Stack.Screen name="Espace utilisateur" component={EspaceUtilisateur} />
+              <Stack.Screen name="Connexion" component={Connexion} />
+            </>
         )}
       </Stack.Navigator>
     </NavigationContainer>

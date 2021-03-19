@@ -10,14 +10,7 @@ import Parse from 'parse/react-native.js';
 
 export default function EspaceUtilisateur({ route, navigation}) {
  
-    const { type } = route.params
-    var road = '';
-    if(type == "Association" )
-        road = "Inscription Association"
-    if(type == "Hôte")
-        road = "InscriptionHote"
-    if(type == "Locataire")
-        road = "InscriptionLocataire"
+  const { type } = route.params
 
   return (
     <View style={styles.container}>
@@ -25,12 +18,14 @@ export default function EspaceUtilisateur({ route, navigation}) {
       <Button
         title='Connexion'
         buttonStyle= {styles.Button}
-        onPress={() => navigation.navigate('Espace utilisateur')} 
+        onPress={() => navigation.navigate("Connexion", {
+          type: type
+        })} 
       />
       <Button
         title='Inscription'
         buttonStyle= {styles.Button}
-        onPress={() => navigation.navigate(road)}
+        onPress={() => navigation.navigate("Inscription " + type)}
       />
       <StatusBar style="auto" />
     </View>

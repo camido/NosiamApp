@@ -3,27 +3,28 @@ import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, Button, Input, TextInput, ScrollView} from 'react-native';
 import Form from '../forms/Form';
 import {validateContent, validateLength, validateTel, validatePassword} from '../forms/Validations';
-import inscriptionAsso from '../../api/inscriptionAsso'
+import inscriptionLoc from '../../api/inscriptionLoc'
+
 //https://scottdomes.com/react-native-sexy-forms/
-export default function InscriptionAsso({ navigation }) {
+export default function InscriptionLocataire({ navigation }) {
     const HandleSubmit = () => {
         navigation.navigate("Attente de confirmation")
     };
     return (
     <ScrollView style={styles.scroll}>
         <View style={styles.view}>
-            <Text style={styles.titleText} > Demande d'inscription comme membre d'une association  </Text>
+            <Text style={styles.titleText} > Inscription pour demande de logement </Text>
         </View>
       <Form
-        action={inscriptionAsso}
-        buttonText="Envoyer la demande"
+        action={inscriptionLoc}
+        buttonText="Valider"
         afterSubmit={HandleSubmit}
         fields={{
-            prenom: {
+            nom: {
                 label: "Prénom",
                 validators: [validateContent]
                 },
-            nom: {
+            prenom: {
                 label: "Nom",
                 validators: [validateContent]
                 },
@@ -41,14 +42,6 @@ export default function InscriptionAsso({ navigation }) {
                 keyboardType: 'phone-pad',
                 },
             },
-            RNA: {
-                validators: [validateContent],
-                label: "Numéro RNA de l'association",
-            },
-            /*pseudo: {
-                label: "Nom d'utilisateur",
-                validators: [validateContent, validateLength],
-            },*/
             password: {
                 label: 'Mot de passe',
                 validators: [validateContent, validatePassword],
@@ -63,7 +56,6 @@ export default function InscriptionAsso({ navigation }) {
                 secureTextEntry: true,
                 },
             },
-
         }}
       />
     </ScrollView>
@@ -81,6 +73,6 @@ export default function InscriptionAsso({ navigation }) {
       },
     scroll : {
         paddingBottom: 40
-    }
+      }
 });
      

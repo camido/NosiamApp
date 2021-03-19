@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, Input, TextInput} from 'react-native';
 import Field from './Field';
 import { Button } from 'react-native-elements';
-import {validateFields, hasValidationError} from '../forms/Validations';
+import {validateFields, hasValidationError} from './Validations';
 
 
 
