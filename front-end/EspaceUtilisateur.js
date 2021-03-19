@@ -4,14 +4,13 @@ import { StyleSheet, Text, View, Alert} from 'react-native';
 import { Button } from 'react-native-elements';
 
 
-import { AsyncStorage  } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Parse from 'parse/react-native.js';
 
 
 export default function EspaceUtilisateur({ route, navigation}) {
- 
-  const { type } = route.params
-
+  const { type } = route.params 
+  
   return (
     <View style={styles.container}>
       <Text> Espace utilisateur : { type } </Text>

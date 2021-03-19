@@ -34,9 +34,7 @@ function HomeScreen(  { navigation }  ) {
         title='Je recherche un logement'
         type ="outline"
         buttonStyle= {styles.Button}
-        onPress={() => navigation.navigate('Espace utilisateur', {
-          type: 'Locataire'
-        })}
+        onPress={() => navigation.navigate("Premier lancement")}
       />
 
       <Button
@@ -81,7 +79,7 @@ export default function App() {
   const [newUser,setNewUser]= useState(true)
   useEffect(() => {
     const isNewUser = async () => {
-      //AsyncStorage.clear();
+      AsyncStorage.clear();
       try {
         const jsonValue = await AsyncStorage.getItem('code')
         console.log(jsonValue)
@@ -99,23 +97,20 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        { newUser === true ? (
+          <>
             <Stack.Screen name="Accueil" component={HomeScreen} />
             <Stack.Screen name="Espace utilisateur" component={EspaceUtilisateur} />
-            { newUser === true ? (
-            <>
-              <Stack.Screen name="Premier lancement" component={gameCodeCreation} /> 
-              <Stack.Screen name="Connexion" component={Connexion} />
-              <Stack.Screen name="Inscription Locataire" component={InscriptionLocataire} />
-              <Stack.Screen name="Inscription Association" component={InscriptionAsso} />
-              <Stack.Screen name="Attente de confirmation" component={EnAttente} />
-            </>
-            ) : (
-            <>
-              <Stack.Screen name="Connexion code" component={gameConnexion} />
-              <Stack.Screen name="Accueil" component={HomeScreen} />
-              <Stack.Screen name="Espace utilisateur" component={EspaceUtilisateur} />
-              <Stack.Screen name="Connexion" component={Connexion} />
-            </>
+            <Stack.Screen name="Premier lancement" component={gameCodeCreation} /> 
+            <Stack.Screen name="Connexion" component={Connexion} />
+            <Stack.Screen name="Inscription Locataire" component={InscriptionLocataire} />
+            <Stack.Screen name="Inscription Association" component={InscriptionAsso} />
+            <Stack.Screen name="Attente de confirmation" component={EnAttente} />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="Connexion code" component={gameConnexion} />
+          </>
         )}
       </Stack.Navigator>
     </NavigationContainer>

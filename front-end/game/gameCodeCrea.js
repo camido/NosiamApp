@@ -9,8 +9,10 @@ export default function gameCodeCreation( {navigation} )  {
         try {
           const jsonValue = JSON.stringify(value)
           await AsyncStorage.setItem('code', jsonValue)
-          navigation.replace('Accueil');
-        } catch (e) {
+          navigation.replace('Espace utilisateur', {
+            type: 'Locataire'
+          })
+        }catch (e) {
           // saving error
         }
     }
