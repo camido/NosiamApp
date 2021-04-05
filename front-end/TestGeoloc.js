@@ -7,6 +7,12 @@ export default function App() {
 
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const [region, setRegion] = useState({
+    latitude : 0, //location.coords.latitude
+    longitude : 0, //location.coords.longitude
+    latitudeDelta : 0.0922,
+    longitudeDelta : 0.0421,
+  });
 
   useEffect(() => {
     (async () => {
@@ -18,25 +24,22 @@ export default function App() {
 
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
+
+      let changeRegion= {
+        latitude : location.coords.latitude, //location.coords.latitude
+        longitude : location.coords.longitude, //location.coords.longitude
+        latitudeDelta : 0.0922,
+        longitudeDelta : 0.0421,
+      };
+      setRegion(changeRegion);
     })();
   }, []);
 
-
-
   return (
     <View style={styles.container}>
-     <MapView 
-      style={styles.map}
-      initialRegion={{
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      }}>
-        <Marker
-          coordinate={{ latitude : location.coords.latitude , longitude : location.coords.longitude }}
-        />
-      </MapView>
+     <MapView style={styles.map} 
+        region={region}
+        showsUserLocation={true}></MapView>
     </View>
   );
 }
