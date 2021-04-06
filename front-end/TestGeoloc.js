@@ -46,8 +46,8 @@ export default function App() {
             coordinate={marker.latlng}
             title={marker.title}
             description={marker.description}
-    />
-  ))}
+          />
+        ))}
       </MapView>
     </View>
   );
