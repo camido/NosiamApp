@@ -27,7 +27,7 @@ export default function gameConnexion ( {navigation} ) {
         getMdp()
         if(code !== null && mdp !== null && code !== undefined && mdp !== undefined)
             if( isEqual(code,mdp) )
-                navigation.replace('Accueil');
+                navigation.replace('Demander un logement');
             else
                 {
                     setReset(true)
@@ -46,8 +46,9 @@ export default function gameConnexion ( {navigation} ) {
     }
     return(
         <View style={styles.container}>
+            <Text style={{fontWeight:'bold', fontSize:35, marginBottom:20}}> TIC TAC TOE </Text>
             <TicTacToe setCode={setCode} reset={reset} setReset={setReset} action={'connexion'}/>
-            <Text> {mdp} {error} </Text>
+            
         </View>
     );
 

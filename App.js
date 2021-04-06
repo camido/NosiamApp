@@ -81,7 +81,7 @@ function Presentation(  { navigation }  ) {
       </View>
       <View >
         <Text style={{fontWeight:'bold', fontSize:20, textAlignVertical: "center",textAlign: "center"}}>Bienvenue </Text>
-        <Text style={{textAlignVertical: "center",textAlign: "center"}}>Nosiam est une application qui permet de trouver rapidement un logement temporaire pour les femmes victimes de toutes sortes de violences. </Text>
+        <Text style={{textAlignVertical: "center",textAlign: "center"}}>EmPleh est une application qui permet de trouver rapidement un logement temporaire pour les femmes victimes de toutes sortes de violences. </Text>
       </View>
       <View>
         <Button  
@@ -121,7 +121,7 @@ export default function App() {
   const [newUser,setNewUser]= useState(true)
   useEffect(() => {
     const isNewUser = async () => {
-      AsyncStorage.clear();
+      //AsyncStorage.clear();
       try {
         const jsonValue = await AsyncStorage.getItem('code')
         console.log(jsonValue)
