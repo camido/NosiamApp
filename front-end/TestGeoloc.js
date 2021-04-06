@@ -1,8 +1,7 @@
 import React, { useState, useEffect, } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location'; // expo install expo-location
-import { StyleSheet, Text, View, Dimensions, Platform } from 'react-native';
-//import location from '../api/coordsAssos';
+import { StyleSheet, View, Dimensions } from 'react-native';
 
 export default function App() {
 
@@ -53,7 +52,7 @@ export default function App() {
         return;
       }
 
-      let location = await Location.getCurrentPositionAsync({});
+      let location = await Location.getCurrentPositionAsync({accuracy : Location.Accuracy.BestForNavigation});
       setLocation(location);
       console.log("location : " + location);
       let changeRegion= {
