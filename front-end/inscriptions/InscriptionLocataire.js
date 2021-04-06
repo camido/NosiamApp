@@ -8,7 +8,8 @@ import inscriptionLoc from '../../api/inscriptionLoc'
 //https://scottdomes.com/react-native-sexy-forms/
 export default function InscriptionLocataire({ navigation }) {
     const HandleSubmit = () => {
-        navigation.navigate("Attente de confirmation")
+        console.log("réussie")
+        navigation.replace("Merci de votre inscription!")
     };
     return (
     <ScrollView style={styles.scroll}>

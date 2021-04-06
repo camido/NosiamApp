@@ -5,7 +5,7 @@ import { Button } from 'react-native-elements';
 
 //Icon droits
 //<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-export default function EnAttente({navigation}) {
+export default function DemanderLogement({navigation}) {
 
   return (
     <View style={styles.container}>
@@ -13,12 +13,13 @@ export default function EnAttente({navigation}) {
         source={require('../../assets/time.png')}
         style={{ width: 50, height: 50}}
      />
-      <Text style={styles.titleText}> Votre demande est en cours d'examination. </Text>
-      <Text style={styles.text}> Vous recevrez un mail de confirmation si votre demande est acceptée. </Text>
+      <Text style={styles.titleText}>Cliquer pour demander un logement. </Text>
+      <Text style={styles.text}>Nous vous proposerons les associations près de vous. </Text>
+      <Text style={styles.text}>La seule chose que vous aurez à faire c'est la contacter, la rencontrer, pour le reste EmPleh s'en chargera. </Text>
       <Button
-        title='Accueil'
+        title="Demander un logement"
         buttonStyle= {styles.Button}
-        onPress={() => navigation.navigate('Accueil')} 
+        onPress={() => navigation.navigate('Associations autour de vous')} 
       />
     </View>
   );

@@ -13,12 +13,14 @@ import Parse from 'parse/react-native.js';
 import EspaceUtilisateur from './front-end/EspaceUtilisateur'
 import InscriptionAsso from './front-end/inscriptions/InscriptionAsso';
 import EnAttente from './front-end/confirmations/enAttente';
+import InscriptionConfirmation from './front-end/confirmations/inscriptionConf';
+import DemanderLogement from './front-end/confirmations/demandeLogement';
 import TicTacToe from './front-end/game/game';
 import gameCodeCreation from './front-end/game/gameCodeCrea';
 import gameConnexion from './front-end/game/gameConnexion';
 import InscriptionLocataire from './front-end/inscriptions/InscriptionLocataire';
 import Connexion from './front-end/Connexion';
-import TestGeoloc from './front-end/TestGeoloc';
+import Geolocalisation from './front-end/Geolocalisation';
 import { Dimensions } from 'react-native';
 import { ThemeProvider } from 'react-native-elements';
 
@@ -60,14 +62,6 @@ function HomeScreen(  { navigation }  ) {
         title='Je suis une association'
         buttonStyle= {styles.Button}
         onPress={() => navigation.navigate('Espace utilisateur', {
-          type: 'Association'
-        })}
-      />
-
-      <Button
-        title='TestGeoloc'
-        buttonStyle= {styles.Button}
-        onPress={() => navigation.navigate('Geolocalisation', {
           type: 'Association'
         })}
       />
@@ -151,17 +145,21 @@ export default function App() {
           <>
             <Stack.Screen name="Bienvenue" component={Presentation} />
             <Stack.Screen name="Accueil" component={HomeScreen} />
-            <Stack.Screen name="Geolocalisation" component={TestGeoloc} />
             <Stack.Screen name="Espace utilisateur" component={EspaceUtilisateur} />
             <Stack.Screen name="Créer votre code" component={gameCodeCreation} /> 
             <Stack.Screen name="Connexion" component={Connexion} />
             <Stack.Screen name="Inscription Locataire" component={InscriptionLocataire} />
             <Stack.Screen name="Inscription Association" component={InscriptionAsso} />
+            <Stack.Screen name="Merci de votre inscription!" component={InscriptionConfirmation} />
             <Stack.Screen name="Attente de confirmation" component={EnAttente} />
+            <Stack.Screen name="Demander un logement" component={DemanderLogement} />
+            <Stack.Screen name="Associations autour de vous" component={Geolocalisation} />
           </>
         ) : (
           <>
             <Stack.Screen name="Connexion code" component={gameConnexion} />
+            <Stack.Screen name="Demander un logement" component={DemanderLogement} />
+            <Stack.Screen name="Associations autour de vous" component={Geolocalisation} />
           </>
         )}
        

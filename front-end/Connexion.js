@@ -8,7 +8,7 @@ import connexionAPI from './../api/connexionAPI'
 export default function Connexion({ navigation }) {
     const HandleSubmit = () => {
         console.log("after submit")
-        //navigation.navigate("Attente de confirmation")
+        navigation.replace("Demander un logement")
     };
     return (
     <ScrollView style={styles.scroll}>

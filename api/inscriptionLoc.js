@@ -17,10 +17,14 @@ export default function inscriptionLoc(prenom, nom, email, telephone, password){
       loc.set("nom", nom);
       loc.set("email", email);
       loc.set("tel", telephone);
+      loc.set("valider", false);
       
       loc.save()
       .then((user) => {
         // Success
+        var bool = true;
+        return bool;
+      
         
       }, (error) => {
         // Save fails

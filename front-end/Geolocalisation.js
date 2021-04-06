@@ -3,7 +3,7 @@ import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location'; // expo install expo-location
 import { StyleSheet, View, Dimensions } from 'react-native';
 
-export default function App() {
+export default function Geolocalisation() {
 
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -52,7 +52,7 @@ export default function App() {
         return;
       }
 
-      let location = await Location.getCurrentPositionAsync({accuracy : Location.Accuracy.BestForNavigation});
+      let location = await Location.getCurrentPositionAsync();
       setLocation(location);
       console.log("location : " + location);
       let changeRegion= {
