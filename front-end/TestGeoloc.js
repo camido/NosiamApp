@@ -2,6 +2,7 @@ import React, { useState, useEffect, } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location'; // expo install expo-location
 import { StyleSheet, Text, View, Dimensions, Platform } from 'react-native';
+//import location from '../api/coordsAssos';
 
 export default function App() {
 
@@ -13,7 +14,37 @@ export default function App() {
     latitudeDelta : 0.0922,
     longitudeDelta : 0.0421,
   });
-
+  const markers =  [{
+    title : "Le Foyer d'Olympe",
+    coordinates : {
+      latitude : 48.539927,
+      longitude : 2.6608169
+    },
+    description : "Téléphone : 07 77 85 82 xx"
+  },{
+    title : "Autre exemple association",
+    coordinates : {
+      latitude : 48.91111775813732,
+      longitude : 2.227310490148633
+    },
+    description : "Téléphone : 07 77 85 82 xx"
+  },{
+    title : "Exemple association",
+    coordinates : {
+      latitude : 48.92034949875574,
+      longitude : 2.2697091719877704
+    },
+    description : "Téléphone : 08 67 85 xx xx"
+  },
+  {
+    title : "Exemple association",
+    coordinates : {
+      latitude : 48.944008529374784,
+      longitude : 2.2435930984674446
+    },
+    description : "Téléphone : 06 78 85 xx xx"
+  }]
+  
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestPermissionsAsync();
@@ -24,7 +55,7 @@ export default function App() {
 
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
-
+      console.log("location : " + location);
       let changeRegion= {
         latitude : location.coords.latitude, //location.coords.latitude
         longitude : location.coords.longitude, //location.coords.longitude
@@ -39,7 +70,16 @@ export default function App() {
     <View style={styles.container}>
      <MapView style={styles.map} 
         region={region}
-        showsUserLocation={true}></MapView>
+        showsUserLocation={true}>
+          {markers.map( (marker,index) => (
+            <MapView.Marker 
+              key={index}
+              coordinate={marker.coordinates}
+              title={marker.title}
+              description={marker.description}
+            />
+          ))}
+      </MapView>
     </View>
   );
 }
