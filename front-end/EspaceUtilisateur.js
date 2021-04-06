@@ -13,7 +13,7 @@ export default function EspaceUtilisateur({ route, navigation}) {
   
   return (
     <View style={styles.container}>
-      <Text> Espace utilisateur : { type } </Text>
+      <Text style={{fontWeight:'bold', fontSize:20}}> { type } : </Text>
       <Button
         title='Connexion'
         buttonStyle= {styles.Button}
