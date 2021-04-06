@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
 import 'react-native-gesture-handler';
-import { StyleSheet, Text, View, Alert} from 'react-native';
+import { StyleSheet, Text, View, Alert, Image} from 'react-native';
 import { Button } from 'react-native-elements';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -19,7 +19,19 @@ import gameConnexion from './front-end/game/gameConnexion';
 import InscriptionLocataire from './front-end/inscriptions/InscriptionLocataire';
 import Connexion from './front-end/Connexion';
 import TestGeoloc from './front-end/TestGeoloc';
+import { Dimensions } from 'react-native';
+import { ThemeProvider } from 'react-native-elements';
 
+const theme = {
+  colors: {
+    primary: "rgb(68,156,153)",
+  },
+  Button: {
+    titleStyle: {
+      color: 'white',
+    }
+  }
+}
 //Before using the SDK...
 Parse.setAsyncStorage(AsyncStorage);
 
@@ -29,18 +41,15 @@ Parse.serverURL = 'https://parseapi.back4app.com/'
 function HomeScreen(  { navigation }  ) {
   return (
     <View style={styles.container}>
-      <Text>Welcome on Nosiam! </Text>
-      <Text>This is your first time using the app. </Text>
+      <Text>Veuillez choisir une option : </Text>
       <Button 
         title='Je recherche un logement'
-        type ="outline"
         buttonStyle= {styles.Button}
-        onPress={() => navigation.navigate("Premier lancement")}
+        onPress={() => navigation.navigate("Créer votre code")}
       />
 
       <Button
         title='Je propose un logement'
-        type ="outline"
         buttonStyle= {styles.Button}
         onPress={() => navigation.navigate('Espace utilisateur', {
           type: 'Hôte'
@@ -49,7 +58,6 @@ function HomeScreen(  { navigation }  ) {
 
       <Button
         title='Je suis une association'
-        type ="outline"
         buttonStyle= {styles.Button}
         onPress={() => navigation.navigate('Espace utilisateur', {
           type: 'Association'
@@ -58,7 +66,6 @@ function HomeScreen(  { navigation }  ) {
 
       <Button
         title='TestGeoloc'
-        type ="outline"
         buttonStyle= {styles.Button}
         onPress={() => navigation.navigate('Geolocalisation', {
           type: 'Association'
@@ -69,6 +76,38 @@ function HomeScreen(  { navigation }  ) {
   );
 }
   
+function Presentation(  { navigation }  ) {
+  return (
+    <View style={{ flexDirection:'column', alignItems:'center', flex: 1}}>
+      <View style={{marginBottom: Dimensions.get('window').height/15, marginTop: Dimensions.get('window').height/6}}>
+        <Image 
+          source={require('./assets/logo.png')}
+          style={{ width:Dimensions.get('window').width/3, height:  Dimensions.get('window').height/5}}
+        />
+      </View>
+      <View >
+        <Text style={{fontWeight:'bold', fontSize:20, textAlignVertical: "center",textAlign: "center"}}>Bienvenue </Text>
+        <Text style={{textAlignVertical: "center",textAlign: "center"}}>Nosiam est une application qui permet de trouver rapidement un logement temporaire pour les femmes victimes de toutes sortes de violences. </Text>
+      </View>
+      <View>
+        <Button  
+          style={{marginTop:15, width:Dimensions.get('window').width/3}} 
+          title='Commencer' 
+          color="rgb(68,156,153)"
+          onPress={() => navigation.replace("Accueil")}
+        />
+      </View>
+      <View style={{marginTop: Dimensions.get('window').height/10}}>
+      <Text style={{marginBottom: 10,fontWeight:'bold', fontSize:10, textAlignVertical: "center",textAlign: "center"}}> Partenaires: </Text>
+        <Image 
+          source={require('./assets/partenaire.jpg')}
+          style={{ width:Dimensions.get('window').width/2.7, height:  Dimensions.get('window').height/12}}
+        />
+      </View>
+    </View>
+    );
+}
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -104,14 +143,17 @@ export default function App() {
   }, [])
   
   return (
+    <ThemeProvider theme={theme}>
     <NavigationContainer>
       <Stack.Navigator>
+        
         { newUser === true ? (
           <>
+            <Stack.Screen name="Bienvenue" component={Presentation} />
             <Stack.Screen name="Accueil" component={HomeScreen} />
             <Stack.Screen name="Geolocalisation" component={TestGeoloc} />
             <Stack.Screen name="Espace utilisateur" component={EspaceUtilisateur} />
-            <Stack.Screen name="Premier lancement" component={gameCodeCreation} /> 
+            <Stack.Screen name="Créer votre code" component={gameCodeCreation} /> 
             <Stack.Screen name="Connexion" component={Connexion} />
             <Stack.Screen name="Inscription Locataire" component={InscriptionLocataire} />
             <Stack.Screen name="Inscription Association" component={InscriptionAsso} />
@@ -122,8 +164,10 @@ export default function App() {
             <Stack.Screen name="Connexion code" component={gameConnexion} />
           </>
         )}
+       
       </Stack.Navigator>
     </NavigationContainer>
+    </ThemeProvider>
   );
 }
 

@@ -18,8 +18,11 @@ export default function gameCodeCreation( {navigation} )  {
     }
     return(
         <View style={styles.container}>
-            <Text style={{ fontSize: 20 , fontWeight: 'bold', margin:10}}> Creer votre code </Text>
-            <Text style={{ margin:20 }}> Afin de proteger votre application </Text>
+            <Text style={{ fontSize: 20 , fontWeight: 'bold', margin:10, color:'rgb(68,156,153)'}}>Créer votre code </Text>
+            <Text style={{ margin:10, textAlignVertical:'center', textAlign:'center' }}>Afin de proteger votre application nous vous demandons de créer un code secret qui prendra la forme d'un jeu de morpion afin de camoufler l'application. </Text>
+            <Text style={{ marginTop:10, fontSize: 15, fontWeight:'bold', color:'red'}}>Attention:</Text>
+            <Text style={{  marginBottom:10 }}>Il vous sera demandé à chaque ouverture.</Text>
+
             <TicTacToe handleSave={handleSave} setCode={setCode} action={'creation'}/>
             
         </View>
@@ -31,6 +34,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
+        padding:20
       },
 });

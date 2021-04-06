@@ -116,21 +116,21 @@ export default class TicTacToe extends React.Component  {
         return(
             <>
                 <View style={{flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
-                    <TouchableOpacity onPress={() => this.onTilePress(0,0)} style={[styles.tile, { borderLeftWidth: 0, borderTopWidth: 0}]}>
+                    <TouchableOpacity onPress={() => this.onTilePress(0,0)} style={[styles.tile, { borderLeftWidth: 5, borderTopWidth: 5}]}>
                         {this.renderIcon(0,0)}
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => this.onTilePress(0,1)} style={[styles.tile, { borderTopWidth: 0}]}>
+                    <TouchableOpacity onPress={() => this.onTilePress(0,1)} style={[styles.tile, { borderTopWidth: 5}]}>
                         {this.renderIcon(0,1)}
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => this.onTilePress(0,2)} style={[styles.tile, { borderRightWidth: 0, borderTopWidth: 0}]}>
+                    <TouchableOpacity onPress={() => this.onTilePress(0,2)} style={[styles.tile, { borderRightWidth: 5, borderTopWidth: 5}]}>
                         {this.renderIcon(0,2)}
                     </TouchableOpacity>
                 </View>
 
                 <View style={{flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
-                    <TouchableOpacity onPress={() => this.onTilePress(1,0)} style={[styles.tile, { borderLeftWidth:0}]}>
+                    <TouchableOpacity onPress={() => this.onTilePress(1,0)} style={[styles.tile, { borderLeftWidth:5}]}>
                         {this.renderIcon(1,0)}
                     </TouchableOpacity>
 
@@ -138,28 +138,28 @@ export default class TicTacToe extends React.Component  {
                         {this.renderIcon(1,1)}
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => this.onTilePress(1,2)} style={[styles.tile, { borderRightWidth: 0 }]}>
+                    <TouchableOpacity onPress={() => this.onTilePress(1,2)} style={[styles.tile, { borderRightWidth: 5 }]}>
                         {this.renderIcon(1,2)}
                     </TouchableOpacity>
                 </View>
 
                 <View style={{flexDirection: "row" }}>
-                    <TouchableOpacity onPress={() => this.onTilePress(2,0)} style={[styles.tile, { borderLeftWidth: 0 , borderBottomWidth : 0}]}>
+                    <TouchableOpacity onPress={() => this.onTilePress(2,0)} style={[styles.tile, { borderLeftWidth: 5 , borderBottomWidth : 5}]}>
                         {this.renderIcon(2,0)}
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => this.onTilePress(2,1)} style={[styles.tile, { borderBottomWidth : 0 }]}>
+                    <TouchableOpacity onPress={() => this.onTilePress(2,1)} style={[styles.tile, { borderBottomWidth : 5 }]}>
                         {this.renderIcon(2,1)}
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => this.onTilePress(2,2)} style={[styles.tile, { borderRightWidth: 0, borderBottomWidth : 0 }]}>
+                    <TouchableOpacity onPress={() => this.onTilePress(2,2)} style={[styles.tile, { borderRightWidth: 5, borderBottomWidth : 5}]}>
                         {this.renderIcon(2,2)}
                     </TouchableOpacity>
                 </View>
                 { ( (this.state.cpt === 7) && (this.props.action === 'creation') )? (
                     <>
-                    <Button title={"Valider"} onPress={() => this.props.handleSave(this.state.code)} /> 
-                    <Button title={"Reset"} onPress={() => this.initializeGame()} /> 
+                    <Button color={'rgb(68,156,153)'} title={"Valider"} onPress={() => this.props.handleSave(this.state.code)} /> 
+                    <Button color={'rgb(68,156,153)'} title={"Reset"} onPress={() => this.initializeGame()} /> 
                     </>
                     ):
                     <View />
@@ -178,20 +178,21 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     tile: {
-        borderWidth: 10,
+        borderColor:'rgb(68,156,153)',
+        borderWidth: 3,
         width: 100,
         height: 100
     },
     tileX: {
-        color: 'black',
-        fontSize: 80,
+        color: 'rgb(68,156,153)',
+        fontSize: 95,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
     },
     tileO: {
-        color: 'black',
-        fontSize: 80,
+        color: 'rgb(68,156,153)',
+        fontSize: 95,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
